@@ -15,8 +15,17 @@
     "outDir": "dist/server",
     "strict": true,
     "strictPropertyInitialization": false,
-    "lib": ["es7"]
+    "lib": [
+      "es7",
+      "dom"
+    ],
   },
-  "include": ["src/server", "src/shared"],
-  "exclude": ["src/client", "node_modules"]
+  "include": [
+    "src/server",
+    "src/shared"
+  ],
+  "exclude": [
+    "src/client",
+    "node_modules"
+  ]
 }

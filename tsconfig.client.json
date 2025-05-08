@@ -5,13 +5,27 @@
     "noImplicitAny": false,
     "noUnusedLocals": false,
     "removeComments": true,
-    "noLib": false,
     "target": "es6",
     "sourceMap": true,
     "allowJs": true,
     "outDir": "dist/client",
-    "lib": ["es7"]
+    "lib": [
+      "DOM",
+      "ESNext"
+    ],
+    "jsx": "react-jsx",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true
   },
-  "include": ["src/client", "src/shared"],
-  "exclude": ["src/server", "node_modules", "**/*.spec.ts"]
+  "include": [
+    "src/client",
+    "src/shared"
+  ],
+  "exclude": [
+    "src/server",
+    "node_modules",
+    "**/*.spec.ts"
+  ]
 }

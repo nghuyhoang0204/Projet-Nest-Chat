@@ -24,30 +24,40 @@ export const Rooms = ({
   }, []);
 
   return (
-    <div className="h-full w-full rounded-lg border border-slate-400 bg-gray-800 md:h-1/2">
-      <div className="flex justify-between rounded-t-md border border-slate-400 bg-slate-400 p-2">
-        <span>Join existing rooms</span>
-        {selectedRoom && (
-          <button onClick={() => selectionHandler('')}>Clear</button>
-        )}
-      </div>
-      <div className="w-full">
-        {!isLoading &&
-          !isDelay &&
-          rooms.map((room, index) => (
+    <div className="flex h-screen items-center justify-center bg-gray-900">
+      <div className="w-full max-w-md rounded-lg border border-slate-400 bg-gray-800 shadow-lg">
+        <div className="flex justify-between rounded-t-md border-b border-slate-400 bg-slate-400 p-4">
+          <span className="font-bold text-gray-900">Join Existing Rooms</span>
+          {selectedRoom && (
             <button
-              key={index}
-              className={
-                selectedRoom === room.name
-                  ? 'w-full bg-slate-900 p-2 text-left text-gray-400'
-                  : ' w-full p-2 text-left text-gray-400'
-              }
-              onClick={() => selectionHandler(room.name)}
+              onClick={() => selectionHandler('')}
+              className="rounded bg-red-500 px-2 py-1 text-sm text-white hover:bg-red-600"
             >
-              {room.name}
+              Clear
             </button>
-          ))}
-        {(isLoading || isDelay) && <Loading />}
+          )}
+        </div>
+        <div className="w-full">
+          {!isLoading &&
+            !isDelay &&
+            rooms.map((room, index) => (
+              <button
+                key={index}
+                className={`w-full p-2 text-left ${selectedRoom === room.name
+                    ? 'bg-slate-900 text-gray-200'
+                    : 'text-gray-400 hover:bg-slate-700'
+                  }`}
+                onClick={() => selectionHandler(room.name)}
+              >
+                {room.name}
+              </button>
+            ))}
+          {(isLoading || isDelay) && (
+            <div className="p-4 text-center text-gray-400">
+              <Loading />
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

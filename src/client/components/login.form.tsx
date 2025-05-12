@@ -9,6 +9,7 @@ import {
 } from '../../server/shared/schemas/chat.schema';
 import { generateUserId, setUser } from '../lib/user';
 import { User } from '../../server/shared/interfaces/chat.interfaces';
+import '../style/LoginForm.css';
 
 const formSchema = z.object({
   userName: UserNameSchema,
@@ -47,44 +48,40 @@ export const LoginForm = ({
   };
 
   return (
-    <div className="h-full w-full py-2 md:px-2 md:py-0">
-      <form
-        onSubmit={handleSubmit(onSubmit)}
-        className="flex flex-col justify-center"
-      >
-        <input
-          type="text"
-          id="login"
-          placeholder="Name"
-          defaultValue={defaultUser && defaultUser}
-          required={true}
-          minLength={UserNameSchema.minLength ?? undefined}
-          maxLength={UserNameSchema.maxLength ?? undefined}
-          {...register('userName')}
-          className="h-12 rounded-md border border-slate-400 bg-gray-800 text-white placeholder-slate-400 invalid:text-pink-600 invalid:ring-pink-600 focus:border-violet-500 focus:outline-none focus:ring-1 focus:ring-violet-500 focus:invalid:border-pink-600 focus:invalid:ring-pink-600 active:invalid:border-pink-600"
-        ></input>
-        <p className="py-1 text-sm text-pink-600">{errors.userName?.message}</p>
-        <input
-          type="text"
-          id="room"
-          required={!disableNewRoom}
-          disabled={disableNewRoom}
-          minLength={RoomNameSchema?.minLength ?? undefined}
-          maxLength={RoomNameSchema?.maxLength ?? undefined}
-          pattern={RoomNameSchemaRegex.source.toString()}
-          placeholder="New room"
-          {...register('roomName')}
-          className="h-12 rounded-md border border-slate-400 bg-gray-800 text-white placeholder-slate-400 invalid:text-pink-600 invalid:ring-pink-600 focus:border-violet-500 focus:outline-none focus:ring-1 focus:ring-violet-500 focus:invalid:border-pink-600 focus:invalid:ring-pink-600 disabled:opacity-50"
-        ></input>
-        <p className="py-1 text-sm text-pink-600">{errors.roomName?.message}</p>
+    <div className="login-container">
+      <div className="login-card">
+        <h1>Join a Room</h1>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <label htmlFor="login">Name</label>
+          <input
+            type="text"
+            id="login"
+            placeholder="Enter your name"
+            defaultValue={defaultUser && defaultUser}
+            required={true}
+            minLength={UserNameSchema.minLength ?? undefined}
+            maxLength={UserNameSchema.maxLength ?? undefined}
+            {...register('userName')}
+          />
+          <p className="error">{errors.userName?.message}</p>
 
-        <button
-          type="submit"
-          className="flex h-12 w-full items-center justify-center rounded-md bg-violet-700 text-white"
-        >
-          Join
-        </button>
-      </form>
+          <label htmlFor="room">New Room</label>
+          <input
+            type="text"
+            id="room"
+            required={!disableNewRoom}
+            disabled={disableNewRoom}
+            minLength={RoomNameSchema?.minLength ?? undefined}
+            maxLength={RoomNameSchema?.maxLength ?? undefined}
+            pattern={RoomNameSchemaRegex.source.toString()}
+            placeholder="Enter room name"
+            {...register('roomName')}
+          />
+          <p className="error">{errors.roomName?.message}</p>
+
+          <button type="submit">Join</button>
+        </form>
+      </div>
     </div>
   );
 };

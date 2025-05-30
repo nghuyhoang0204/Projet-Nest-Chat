@@ -1,6 +1,6 @@
 import React from 'react';
 import { Room, User } from '../../server/shared/interfaces/chat.interfaces';
-
+import "../../client/style/header.css";
 export const Header = ({
   isConnected,
   users,
@@ -15,26 +15,26 @@ export const Header = ({
   roomName: Room['name'];
 }) => {
   return (
-    <header className="flex h-1/6 flex-col pt-12">
-      <div className="flex justify-between">
-        <div className="flex h-8 items-center">
-          <span className="ml-1">{isConnected ? '🟢' : '🔴'}</span>
-          <span className="px-2 text-3xl text-white">{'/'}</span>
-          <span className=" text-white">{roomName}</span>
+    <header className="chat-header">
+      <div className="chat-header-row">
+        <div className="chat-header-room">
+          <span className="chat-header-status">{isConnected ? '🟢' : '🔴'}</span>
+          <span className="chat-header-slash">{'/'}</span>
+          <span className="chat-header-roomname">{roomName}</span>
         </div>
-        <div className="flex">
+        <div className="chat-header-actions">
           <button
-            onClick={() => handleUsersClick()}
-            className="ml-1 flex h-8 items-center rounded-xl bg-gray-800 px-4"
+            onClick={handleUsersClick}
+            className="chat-header-btn"
           >
-            <span className="mr-1 text-lg text-white">{'👨‍💻'}</span>
-            <span className="ml-1 text-white">{users.length}</span>
+            <span className="chat-header-btn-icon">{'👨‍💻'}</span>
+            <span className="chat-header-btn-count">{users.length}</span>
           </button>
           <button
-            onClick={() => handleLeaveRoom()}
-            className="ml-1 flex h-8 items-center rounded-xl bg-gray-800 px-4"
+            onClick={handleLeaveRoom}
+            className="chat-header-btn"
           >
-            <span className="mr-1 text-white">{'Leave'}</span>
+            <span className="chat-header-btn-leave">{'Leave'}</span>
           </button>
         </div>
       </div>

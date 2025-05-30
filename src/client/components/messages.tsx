@@ -8,13 +8,13 @@ const determineMessageStyle = (
 ) => {
   if (user && messageUserId === user.userId) {
     return {
-      message: 'bg-slate-500 p-4 ml-24 rounded break-words',
-      sender: 'ml-24 pl-4',
+      message: 'message-bubble message-own',
+      sender: 'message-sender message-own-sender',
     };
   } else {
     return {
-      message: 'bg-slate-800 p-4 mr-24 rounded break-words',
-      sender: 'mr-24 pl-4',
+      message: 'message-bubble message-other',
+      sender: 'message-sender message-other-sender',
     };
   }
 };
@@ -27,20 +27,20 @@ export const Messages = ({
   messages: ClientMessage[];
 }) => {
   return (
-    <div className="flex h-4/6 w-full flex-col-reverse overflow-y-scroll">
+    <div className="messages-list">
       {messages?.map((message, index) => {
         return (
-          <div key={index + message.timeSent} className="mb-4">
+          <div key={index + message.timeSent} className="message-wrapper">
             <div
               className={
                 determineMessageStyle(user, message.user.userId).sender
               }
             >
-              <span className="text-sm text-gray-400">
+              <span className="message-username">
                 {message.user.userName}
               </span>
-              <span className="text-sm text-gray-400">{' ' + '•' + ' '}</span>
-              <span className="text-sm text-gray-400">
+              <span className="message-dot">{' • '}</span>
+              <span className="message-time">
                 {new Date(message.timeSent).toLocaleString()}
               </span>
             </div>
@@ -49,10 +49,10 @@ export const Messages = ({
                 determineMessageStyle(user, message.user.userId).message
               }
             >
-              <p className="text-white">{message.message}</p>
+              <p className="message-text">{message.message}</p>
             </div>
             {user && message.user.userId === user.userId && (
-              <p className="text-right text-xs text-gray-400">
+              <p className="message-status">
                 {message.delivered ? 'Delivered' : 'Not delivered'}
               </p>
             )}

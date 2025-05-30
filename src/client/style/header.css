@@ -1,0 +1,63 @@
+.chat-header {
+  display: flex;
+  flex-direction: column;
+  padding-top: 32px;
+  height: 16%;
+}
+
+.chat-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chat-header-room {
+  display: flex;
+  align-items: center;
+  height: 32px;
+}
+
+.chat-header-status {
+  margin-left: 4px;
+}
+
+.chat-header-slash {
+  padding: 0 8px;
+  font-size: 1.5rem;
+  color: #fff;
+}
+
+.chat-header-roomname {
+  color: #fff;
+}
+
+.chat-header-actions {
+  display: flex;
+}
+
+.chat-header-btn {
+  margin-left: 4px;
+  display: flex;
+  align-items: center;
+  height: 32px;
+  border-radius: 16px;
+  background: #23272f;
+  padding: 0 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.chat-header-btn-icon {
+  margin-right: 4px;
+  font-size: 1.2rem;
+  color: #fff;
+}
+
+.chat-header-btn-count {
+  margin-left: 4px;
+  color: #fff;
+}
+
+.chat-header-btn-leave {
+  color: #fff;
+}

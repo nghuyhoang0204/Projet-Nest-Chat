@@ -20,23 +20,8 @@ $ npm install
 
 ```bash
 # Clean and build the project, then start the development server
-$ npm run dev
+$ npm run dev (localhost:3000)
 ```
-
-#### Watch Mode (Backend Only)
-
-```bash
-# Start the backend server in watch mode
-$ npm run dev:server
-```
-
-#### Production Mode
-
-```bash
-# Build the project and start the production server
-$ npm run start:prod (localhost:3000)
-```
-
 
 ## Project Structure
 

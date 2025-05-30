@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { Message } from '../../server/shared/interfaces/chat.interfaces';
 import { MessageSchema } from '../../server/shared/schemas/chat.schema';
-
+import '../style/chat.css';
 export const MessageForm = ({
   sendMessage,
 }: {
@@ -26,19 +26,19 @@ export const MessageForm = ({
   };
 
   return (
-    <div className="flex h-1/6 items-center">
-      <form className="flex w-full appearance-none rounded-md bg-gray-800 outline-none focus:outline-none">
+    <div className="message-form-container">
+      <form className="message-form">
         <textarea
           ref={textAreaRef}
           onKeyDown={(e) => handleKeyDown(e)}
           id="minput"
           placeholder="Message"
           maxLength={MessageSchema?.maxLength ?? undefined}
-          className="mb-2 max-h-16 flex-grow appearance-none rounded-md border-none bg-gray-800 text-white placeholder-slate-400 focus:outline-none focus:ring-transparent"
+          className="message-form-textarea"
         ></textarea>
         <button
           onClick={(e) => submit(e)}
-          className="self-end p-2 text-slate-400"
+          className="message-form-send"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -46,7 +46,7 @@ export const MessageForm = ({
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="currentColor"
-            className="h-4 w-4 bg-gray-800"
+            className="message-form-send-icon"
           >
             <path
               strokeLinecap="round"
